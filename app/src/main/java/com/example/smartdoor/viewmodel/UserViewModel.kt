@@ -72,27 +72,17 @@ class UserViewModel : ViewModel() {
         val url = "$supabaseUrl/storage/v1/object/$bucketId"
         val jsonBody = """["$filePath"]""" // JSON array of paths
 
-        val requestBody = jsonBody.toRequestBody("application/json".toMediaTypeOrNull())
-        val client = OkHttpClient()
+        val bucket = supabase.storage.from(bucketId) // Replace "your_bucket_name" with your actual bucket name
+        try {
+            val result = bucket.delete(filePath)
 
-        val request = Request.Builder()
-            .url(url)
-            .post(requestBody)
-            .addHeader("Authorization", supabaseKey)
-            .addHeader("Content-Type", "application/json")
-            .build()
-
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val response = client.newCall(request).execute()
-                if (response.isSuccessful) {
-                    Log.d("Supabase", "Image deleted successfully from bucket")
-                } else {
-                    Log.e("Supabase", "Failed to delete image: ${response.message}, ${response.body?.string()}")
-                }
-            } catch (e: Exception) {
-                Log.e("Supabase", "Error: ${e.message}")
-            }
+            Log.e("Supabase", "${result}")
+        }
+        catch (e: Exception){
+            Log.e("Supabase", "Error: ${e.message}")
+        }
+        finally{
+            Log.e("Supabase", "done")
         }
     }
 
