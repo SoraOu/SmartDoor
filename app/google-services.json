@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "167150459305",
+    "firebase_url": "https://door--smart-security-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "door--smart-security",
+    "storage_bucket": "door--smart-security.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:167150459305:android:f65802bf556b8f3e97ccb8",
+        "android_client_info": {
+          "package_name": "com.example.smartdoor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "167150459305-v83ts4tlcsomji53rct5vjc2uiojfc9m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUOMEji4vNZQNgyBwxhDChi7zgiSKpcuY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "167150459305-v83ts4tlcsomji53rct5vjc2uiojfc9m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

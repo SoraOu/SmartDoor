@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Path to your application's cache directory (or any other directory where images are stored) -->
+    <external-path
+        name="external_files"
+        path="Android/data/com.example.smartdoor/files/Pictures/" />
+</paths>
