@@ -28,10 +28,19 @@ class UserAdapter(
             .load(user.userImgUrl)
             .into(holder.binding.userImage)
 
-        // Handle delete button click
         holder.binding.deleteButton.setOnClickListener {
-            onDeleteClick(user) // Call the delete action passed from the fragment
+            val context = holder.itemView.context
+
+            androidx.appcompat.app.AlertDialog.Builder(context)
+                .setTitle("Delete User")
+                .setMessage("Are you sure you want to delete this user? (This cannot be undone)")
+                .setPositiveButton("Delete") { _, _ ->
+                    onDeleteClick(user)
+                }
+                .setNegativeButton("Cancel", null)
+                .show()
         }
+
     }
 
     override fun getItemCount(): Int = userList.size

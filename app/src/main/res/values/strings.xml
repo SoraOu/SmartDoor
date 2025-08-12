@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Smart Door</string>
+    <!-- Array for image options in the dropdown -->
+    <string-array name="image_options">
+        <item>Image 1</item>
+        <item>Image 2</item>
+        <item>Image 3</item>
+    </string-array>
 </resources>

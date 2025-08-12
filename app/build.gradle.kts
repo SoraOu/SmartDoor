@@ -1,19 +1,20 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android) version "2.1.0"      // Kotlin plugin version will be updated here
-    alias(libs.plugins.compose.compiler)  // Apply Compose Compiler plugin
+    alias(libs.plugins.jetbrains.kotlin.android) version "2.1.0"
+    alias(libs.plugins.compose.compiler)
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
     id("kotlin-kapt")
 }
+
 android {
     namespace = "com.example.smartdoor"
-    compileSdk = 35  // ✅ Update this from 34 to 35
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.smartdoor"
         minSdk = 24
-        targetSdk = 35  // Optional: update targetSdk to 35 as well
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -29,7 +30,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.0" // Set the latest Compose Compiler version
+        kotlinCompilerExtensionVersion = "1.5.0"
     }
 
     buildTypes {
@@ -60,17 +61,22 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-
-
 }
 
 dependencies {
+
+    implementation("androidx.work:work-runtime:2.7.1")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.0.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
 
-    implementation("androidx.compose.ui:ui:1.5.0")  // Jetpack Compose dependencies
+    implementation("com.google.android.material:material:1.7.0")  // Material Components for AppBarLayout
     implementation("androidx.compose.material3:material3:1.0.0")  // Material3 for Compose
-    implementation("androidx.compose.ui:ui-tooling-preview:1.5.0")  // Tooling for preview
+    implementation("androidx.compose.ui:ui:1.5.0")  // Jetpack Compose dependencies
+    implementation("androidx.compose.ui:ui-tooling-preview:1.5.0")
+
+    implementation("androidx.appcompat:appcompat:1.4.1")  // Ensure the correct version of AppCompat
+    implementation("androidx.recyclerview:recyclerview:1.2.1")  // RecyclerView for list items
+    implementation("androidx.constraintlayout:constraintlayout:2.1.1")  // ConstraintLayout
 
     // Core
     implementation(libs.androidx.core.ktx)
@@ -83,10 +89,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-
-    // UI
-    implementation(libs.androidx.appcompat) // Corrected to androidx.appcompat (AndroidX version)
-    implementation(libs.material)
 
     // Firebase dependencies (latest versions)
     implementation("com.google.firebase:firebase-analytics:22.5.0")
@@ -121,9 +123,7 @@ dependencies {
 
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
 
-
-
-
-
+    implementation("com.github.bumptech.glide:glide:4.11.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
 
 }

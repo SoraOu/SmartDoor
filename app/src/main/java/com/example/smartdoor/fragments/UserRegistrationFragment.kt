@@ -26,6 +26,11 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 import java.io.IOException
+import android.view.MotionEvent
+import android.view.animation.AnimationUtils
+import android.widget.ProgressBar
+import com.example.smartdoor.R
+
 
 class UserRegistrationFragment : Fragment() {
 
@@ -38,6 +43,8 @@ class UserRegistrationFragment : Fragment() {
     private val supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsZ2twbm1pd2xxcWt4em9lcXV5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE3MzIyNjYsImV4cCI6MjA2NzMwODI2Nn0.SuwdRYjz6yjudrVAQpdj6JxZ8b1rr9hJUjBcJeAM-uY" // Replace with your actual Supabase Key
 
     private lateinit var photoUri: Uri  // Declare the URI for the captured image
+    private lateinit var progressDialog: AlertDialog
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,11 +55,30 @@ class UserRegistrationFragment : Fragment() {
         // Initialize Firebase
         FirebaseApp.initializeApp(requireContext())
 
+        // Load the animation
+        val scaleAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.button_press)
+
+        // Capture Button Logic
+        binding.captureButton.setOnTouchListener { v, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> v.startAnimation(scaleAnimation)
+            }
+            false // Let click listener still work
+        }
         binding.captureButton.setOnClickListener { openCamera() }
+
+        // Gallery Button Logic
+        binding.galleryButton.setOnTouchListener { v, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> v.startAnimation(scaleAnimation)
+            }
+            false
+        }
         binding.galleryButton.setOnClickListener { openGallery() }
 
         return binding.root
     }
+
 
     // Check and request permissions
     private fun checkPermissions() {
@@ -182,7 +208,37 @@ class UserRegistrationFragment : Fragment() {
         uploadToSupabase(renamedFile, customFileName)
     }
 
+    private fun showProgressDialog() {
+        // Create the progress bar and set it in a dialog
+        val builder = AlertDialog.Builder(requireContext())
+        val inflater = requireActivity().layoutInflater
+        val view = inflater.inflate(R.layout.dialog_progress, null)
+
+        progressBar = view.findViewById(R.id.progressBar)
+        progressBar.isIndeterminate = false // Allow filling
+
+        builder.setView(view)
+            .setCancelable(false) // Make sure it can't be dismissed by tapping outside
+        progressDialog = builder.create()
+
+        // Show the dialog
+        progressDialog.show()
+    }
+
+    private fun updateProgressBar(progress: Int) {
+        progressBar.progress = progress
+    }
+
+    private fun dismissProgressDialog() {
+        if (progressDialog.isShowing) {
+            progressDialog.dismiss()
+        }
+    }
+
     private fun uploadToSupabase(file: File, customFileName: String) {
+        // Show progress dialog
+        showProgressDialog()
+
         val mimeType = "image/jpeg"
         val requestBody = file.asRequestBody(mimeType.toMediaTypeOrNull())
         val filePath = "users/${file.name}"
@@ -200,6 +256,8 @@ class UserRegistrationFragment : Fragment() {
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 requireActivity().runOnUiThread {
+                    // Hide the progress bar
+                    dismissProgressDialog()
                     Log.e("UploadError", "Upload failed: ${e.message}")
                     Toast.makeText(requireContext(), "Upload failed: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
@@ -207,6 +265,9 @@ class UserRegistrationFragment : Fragment() {
 
             override fun onResponse(call: Call, response: Response) {
                 requireActivity().runOnUiThread {
+                    // Hide the progress bar when the upload completes
+                    dismissProgressDialog()
+
                     if (response.isSuccessful) {
                         Log.d("Upload", "Image uploaded successfully")
                         Toast.makeText(requireContext(), "Image uploaded", Toast.LENGTH_SHORT).show()
@@ -235,6 +296,8 @@ class UserRegistrationFragment : Fragment() {
             }
         })
     }
+
+
 
     private fun uploadMetadataToFirebase(metadata: Map<String, String>) {
         val firebaseDatabase = FirebaseDatabase.getInstance().reference

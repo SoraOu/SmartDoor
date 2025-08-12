@@ -1,55 +1,90 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- ScrollView for image -->
-    <ScrollView
-        android:id="@+id/image_scroll"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:fillViewport="true"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/button_group"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <ImageView
-            android:id="@+id/selected_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:padding="16dp" />
-    </ScrollView>
-
-    <!-- Horizontal layout for buttons -->
-    <LinearLayout
-        android:id="@+id/button_group"
-        android:layout_width="wrap_content"
+    <!-- Vertical layout for larger square buttons with icons -->
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_gravity="center"
+        android:background="@drawable/border"
+        android:padding="8dp"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/capture_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Capture with Camera" />
-
-        <Button
-            android:id="@+id/gallery_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Choose from Gallery"
-            android:layout_marginStart="16dp" />
-    </LinearLayout>
+        <TextView
+            android:id="@+id/user_registration_Title"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:gravity="center"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:text="Registration"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+    </FrameLayout>
 
     <!-- EditText for custom file name input -->
+
+    <LinearLayout
+        android:id="@+id/button_group"
+        android:layout_width="280dp"
+        android:layout_height="500dp"
+        android:layout_margin="16dp"
+        android:layout_marginBottom="4dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        app:layout_constraintVertical_bias="0.451"
+        tools:gravity="center">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/capture_button"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:layout_gravity="center"
+            android:backgroundTint="#5576DA"
+            android:contentDescription="Camera Button"
+            android:drawableTop="@drawable/ic_camera"
+            android:drawablePadding="8dp"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp"
+            app:cornerRadius="12dp"
+            android:gravity="center"
+            android:text="Camera"
+            android:textSize="14sp" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/gallery_button"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#5576DA"
+            android:contentDescription="Gallery Button"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp"
+            app:cornerRadius="12dp"
+            android:drawableTop="@drawable/ic_folder"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:text="Gallery"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
     <EditText
         android:id="@+id/file_name_input"
         android:layout_width="0dp"
@@ -57,9 +92,9 @@
         android:layout_margin="16dp"
         android:hint="Enter custom file name"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/image_scroll"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        tools:ignore="MissingConstraints" />
 
     <!-- Button to confirm the custom file name -->
     <Button
@@ -68,8 +103,15 @@
         android:layout_height="wrap_content"
         android:text="Confirm File Name"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/file_name_input"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:indeterminate="true" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

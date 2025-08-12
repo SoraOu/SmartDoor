@@ -1,32 +1,46 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="8dp"
-    android:gravity="center_horizontal">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    android:background="@drawable/border2">
 
-    <ImageView
-        android:id="@+id/userImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="centerCrop"
-        android:contentDescription="User Image"/>
-
-    <TextView
-        android:id="@+id/userName"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textSize="18sp"
-        android:gravity="center"
-        android:text="User Name"/>
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:gravity="center_horizontal"
+        android:background="@drawable/border2">
 
-    <Button
-        android:id="@+id/deleteButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Delete" />
+        <ImageView
+            android:id="@+id/userImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:background="@drawable/border2"
+            android:scaleType="centerCrop"
+            android:contentDescription="User Image" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:text="User Name" />
+
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="#122663"
+            android:textColor="@color/colorText"
+            android:text="Delete" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

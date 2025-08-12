@@ -1,10 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Royal Blue Theme -->
+    <color name="royal_blue">#4169E1</color> <!-- Royal Blue -->
+    <color name="royal_blue_light">#5A8FDF</color> <!-- Light Royal Blue -->
+    <color name="royal_blue_dark">#2541B2</color> <!-- Dark Royal Blue -->
+
+    <!-- Complementary Colors -->
+    <color name="golden_yellow">#FFD700</color> <!-- Gold -->
+    <color name="light_gold">#FFF4C1</color> <!-- Light Gold -->
+    <color name="white">#FFFFFFFF</color> <!-- White -->
+    <color name="charcoal_gray">#333333</color> <!-- Charcoal Gray -->
+    <color name="silver_gray">#B0B0B0</color> <!-- Silver Gray -->
+
+    <!-- Blues for Accent -->
+    <color name="sky_blue">#87CEEB</color> <!-- Sky Blue -->
+    <color name="baby_blue">#BFEFFF</color> <!-- Baby Blue -->
+    <color name="light_steel_blue">#B0C4DE</color> <!-- Light Steel Blue -->
+
+    <!-- Purples and Lavenders (to complement Blue) -->
+    <color name="lavender">#E6E6FA</color> <!-- Lavender -->
+    <color name="medium_purple">#9370DB</color> <!-- Medium Purple -->
+    <color name="blue_violet">#8A2BE2</color> <!-- Blue Violet -->
+
+    <!-- Neutrals for balance -->
+    <color name="light_gray">#D3D3D3</color> <!-- Light Gray -->
+    <color name="dark_gray">#A9A9A9</color> <!-- Dark Gray -->
+    <color name="black">#000000</color> <!-- Black -->
+    <color name="off_white">#F5F5F5</color> <!-- Off White -->
+
+    <!-- Accents for Text and Icons -->
+    <color name="light_yellow">#FFEB3B</color> <!-- Accent Yellow -->
+    <color name="peach_puff">#FFDAB9</color> <!-- Peach Puff -->
+    <color name="coral">#FF7F50</color> <!-- Coral -->
+
+    <!-- Soft greens to complement blue -->
+    <color name="pale_green">#98FB98</color> <!-- Pale Green -->
+    <color name="medium_sea_green">#3CB371</color> <!-- Medium Sea Green -->
+    <color name="forest_green">#228B22</color> <!-- Forest Green -->
+
+    <color name="dark_blue_1">#000035</color>
+    <color name="dark_blue_2">#000042</color>
+    <color name="dark_blue_3">#000053</color>
+    <color name="dark_blue_4">#000068</color>
+    <color name="royal_blue_5">#1c1c84</color>
+
+    <color name="colorBackground">#000053</color>
+    <color name="colorButton">#1c1c84</color>
+    <color name="colorButtonText">#FFFFFF</color>
+    <color name="colorText">#FFFFFF</color>
+
 </resources>

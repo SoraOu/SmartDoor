@@ -1,0 +1,49 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="#FF5576DA">  <!-- gray background -->
+
+    <TextView
+        android:id="@+id/classification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Classification"
+        android:textSize="14sp"
+        android:paddingBottom="8dp" />
+
+    <LinearLayout
+        android:id="@+id/contentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/border2"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:paddingTop="40dp"
+            android:contentDescription="Image related to entry" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/entryTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Entry Title"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+</androidx.cardview.widget.CardView>
